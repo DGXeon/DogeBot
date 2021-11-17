@@ -1418,7 +1418,6 @@ if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quo
         yoii = '*'
        stst = await xeon.getStatus(`${sender.split('@')[0]}@c.us`)
 				stst = stst.status == 401 ? '' : stst.status
-			
        menu = `
 🐶 Hi @${sender.split("@")[0]}
 
@@ -3612,47 +3611,41 @@ case 'linkwa':
         });
         break;
       // Demote Admins
-      case 'demote':
-if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
-					if (!isGroup) return
-					if (!isGroupAdmins) return reply("Only admin")
-                   if (!isBotGroupAdmins) return reply("Bot not admin")
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*tag the person u want to demote!*')
-					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-					if (mentioned.length > 1) {
-						teks = ''
-						for (let _ of mentioned) {
-							teks += `*you have been domoted from admin, lmao* :\n`
-							teks += `@_.split('@')[0]`
-						}
-						mentions(teks, mentioned, true)
-						denz.groupDemoteAdmin(from, mentioned)
-					} else {
-						mentions(`*Order received, demoted* @${mentioned[0].split('@')[0]} *you have been removed from admin tag*`, mentioned, true)
-						denz.groupDemoteAdmin(from, mentioned)
-					}
-					break
+      case "demote":
+        if (!mek.key.fromMe && !isGroupAdmins) return reply("Admin Group Only");
+        if (!isGroup) return;
+        if (!isBotGroupAdmins) return reply("Bot not admin");
+        if (
+          mek.message.extendedTextMessage === undefined ||
+          mek.message.extendedTextMessage === null
+        )
+          return reply("Reply members");
+        mentionede = mek.message.extendedTextMessage.contextInfo.participant;
+        xeon.groupDemoteAdmin(from, [mentionede]);
+        teks = `Members @${mentionede.split("@")[0]} demoted`;
+        xeon.sendMessage(from, teks, text, {
+          quoted: mek,
+          contextInfo: { mentionedJid: [mentionede] },
+        });
+        break;
       // Promote Members
-case 'promote':
-if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
-					if (!isGroup) return
-					if (!isGroupAdmins) return reply("Only admin")
-                   if (!isBotGroupAdmins) return reply("Bot not admin")
-				if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*tag the person u want to make admin!*')
-					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-					if (mentioned.length > 1) {
-						teks = ''
-						for (let _ of mentioned) {
-							teks += `*Congrats* 🥳 *you have been promoted as grup admin🎉, but remember, u are not allowed to add or promote anybody without grup owner permission🗿*:\n`
-							teks += `@_.split('@')[0]`
-						}
-						mentions(teks, mentioned, true)
-						xeon.groupMakeAdmin(from, mentioned)
-					} else {
-						mentions(`*Congrats* 🥳 @${mentioned[0].split('@')[0]} *you have been promoted as grup admin🎉, but remember, u are not allowed to add or promote anybody without grup owner permission🗿*`, mentioned, true)
-						xeon.groupMakeAdmin(from, mentioned)
-					}
-					break
+      case "promote":
+        if (!mek.key.fromMe && !isGroupAdmins) return reply("Admin Group Only");
+        if (!isGroup) return;
+        if (!isBotGroupAdmins) return reply("Bot not admin");
+        if (
+          mek.message.extendedTextMessage === undefined ||
+          mek.message.extendedTextMessage === null
+        )
+          return reply("Reply members");
+        mentionede = mek.message.extendedTextMessage.contextInfo.participant;
+        xeon.groupMakeAdmin(from, [mentionede]);
+        teks = `Members @${mentionede.split("@")[0]} promoted`;
+        xeon.sendMessage(from, teks, text, {
+          quoted: mek,
+          contextInfo: { mentionedJid: [mentionede] },
+        });
+        break;
       case "closegc":
         if (!mek.key.fromMe && !isGroupAdmins) return reply("Only admin");
         if (!isBotGroupAdmins) return reply("Bot not admin");
