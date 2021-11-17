@@ -46,7 +46,6 @@ const yts = require("yt-search");
 const ms = require("parse-ms");
 const os = require('os');
 const toMs = require("ms");
-const ggs = require('google-it');
 const googleImage = require('g-i-s');
 const imgbb = require("imgbb-uploader");
 const { error } = require("qrcode-terminal");
@@ -1628,11 +1627,6 @@ ${readmore}
 > ⬡ ${prefix}neko
 > ⬡ ${prefix}trapnime
 
-
- ⬣𝙊𝙏𝙃𝙀𝙍 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
-> ⬡ ${prefix}google query
-> ⬡ ${prefix}gimage query
-
 𝗡𝗼𝘁𝗲 : Horny = Bonks💥
 Just Learn to Make Bots 🐶
  
@@ -2928,39 +2922,6 @@ listt += '-  ' + ress.hero[i] + '\n'
 }
 reply(listt)
 })
-break
-//google search
-case 'google':
-case 'googlesearch':
-case 'ggs':
-if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
-if (args.length < 1) return reply('What are you looking for??')
-teks = args.join(' ')
-res = await ggs({'query' : `${teks}`})
-kant = ``
-for (let i of res) {
-kant += `*Title* : ${i.title}
-*Link* : ${i.link}
-*Information* : ${i.snippet}`
-}
-var akhir = kant.trim()
-reply(akhir)
-break
-//google image
-case 'gimage':
-case 'googleimage':
-if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
-if (args.length < 1) return reply('What do you want to search?')
-teks = args.join(' ')
-res = await googleImage(teks, google)
-function google(error, result){
-if (error){ return reply('_[ ! ] Found Error Or Result Not Found_')}
-else {
-var gugIm = result
-var random =  gugIm[Math.floor(Math.random() * gugIm.length)].url
-sendFileFromUrl(random, image, {quoted: mek, caption: `*Search Results From :* ${teks}`})
-}
-}
 break
 //fun features by xeon
                 case 'uglycheck':
