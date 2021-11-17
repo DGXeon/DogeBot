@@ -47,7 +47,6 @@ const ms = require("parse-ms");
 const os = require('os');
 const toMs = require("ms");
 const googleImage = require('g-i-s');
-const imgbb = require("imgbb-uploader");
 const { error } = require("qrcode-terminal");
 const {
   getBuffer,
