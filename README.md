@@ -17,8 +17,9 @@
 
 
 ## 1st Repository was deleted
-First repo was mistakely deleted by my friend💔
-It had 5+ stars and 90+ forks😔😭, please give star before forking this repo.🙏🙇🏼‍♂️Thanks!!
+First repo of this bot was mistakely deleted by my friend💔
+It had 5+ stars and 90+ forks😔😭, please give star before forking this repo.🙏🙇🏼‍♂️Thank you!!
+
 
 ## Deploy
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DGXeon/DogeBot/)
