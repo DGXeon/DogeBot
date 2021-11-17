@@ -1,0 +1,93 @@
+{
+  "_from": "github:adiwajshing/baileys",
+  "_id": "@adiwajshing/baileys@3.5.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/@adiwajshing/baileys",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "github:adiwajshing/baileys",
+    "rawSpec": "github:adiwajshing/baileys",
+    "saveSpec": "github:adiwajshing/baileys",
+    "fetchSpec": null,
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "github:adiwajshing/baileys#46fdab76ee8bdef71249d0c4d46d266a2e8a1404",
+  "_spec": "github:adiwajshing/baileys",
+  "_where": "D:\\Bot\\NTFVX-Base-main",
+  "author": {
+    "name": "Adhiraj Singh"
+  },
+  "bugs": {
+    "url": "https://github.com/adiwajshing/baileys/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@adiwajshing/keyed-db": "^0.2.2",
+    "curve25519-js": "^0.0.4",
+    "futoin-hkdf": "^1.3.2",
+    "got": "^11.8.1",
+    "https-proxy-agent": "^5.0.0",
+    "jimp": "^0.16.1",
+    "music-metadata": "^7.4.1",
+    "pino": "^6.7.0",
+    "pino-pretty": "^4.3.0",
+    "protobufjs": "^6.10.1",
+    "qrcode-terminal": "^0.12.0",
+    "ws": "^7.3.1"
+  },
+  "deprecated": false,
+  "description": "WhatsApp Web API",
+  "devDependencies": {
+    "@types/got": "^9.6.11",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.6.2",
+    "@types/pino": "^6.3.2",
+    "@types/ws": "^7.2.6",
+    "assert": "^2.0.0",
+    "dotenv": "^8.2.0",
+    "mocha": "^8.1.3",
+    "ts-node-dev": "^1.0.0",
+    "typedoc": "^0.20.0-beta.27",
+    "typescript": "^4.0.0"
+  },
+  "files": [
+    "lib/*",
+    "WAMessage/*"
+  ],
+  "homepage": "https://github.com/adiwajshing/Baileys",
+  "keywords": [
+    "whatsapp",
+    "js-whatsapp",
+    "whatsapp-api",
+    "whatsapp-web",
+    "whatsapp",
+    "whatsapp-chat",
+    "whatsapp-group",
+    "automation"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@adiwajshing/baileys",
+  "repository": {
+    "url": "git+ssh://git@github.com/adiwajshing/baileys.git"
+  },
+  "scripts": {
+    "browser-decode": "yarn ts-node src/BrowserMessageDecoding.ts",
+    "build:all": "tsc && typedoc",
+    "build:docs": "typedoc",
+    "build:tsc": "tsc",
+    "example": "node --inspect -r ts-node/register Example/example.ts",
+    "gen-protobuf": "bash src/Binary/GenerateStatics.sh",
+    "lint": "eslint '*/*.ts' --quiet --fix",
+    "prepare": "tsc",
+    "test": "mocha --timeout 240000 -r ts-node/register src/Tests/Tests.*.ts"
+  },
+  "types": "lib/index.d.ts",
+  "version": "3.5.1"
+}
