@@ -1503,7 +1503,6 @@ ${readmore}
 > ⬡ ${prefix}swm author|packname
 > ⬡ ${prefix}take author|packname
 > ⬡ ${prefix}fdeface
-> ⬡ ${prefix}attp text
 > ⬡ ${prefix}emoji
 > ⬡ ${prefix}golden text
 > ⬡ ${prefix}flower text
@@ -1532,6 +1531,7 @@ ${readmore}
 > ⬡ ${prefix}neon2 text
 > ⬡ ${prefix}wall text
 > ⬡ ${prefix}notewrite text
+> ⬡ ${prefix}pubglogo text
 
  
  ⬣ 𝘾𝙊𝙉𝙑𝙀𝙍𝙏 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
@@ -1542,12 +1542,6 @@ ${readmore}
 > ⬡ ${prefix}fast
 > ⬡ ${prefix}reverse
 > ⬡ ${prefix}tourl
-> ⬡ ${prefix}tts <code> <text>
-> ⬡ ${prefix}ptts up txt|down txt
-> ⬡ ${prefix}ttp <text>
-> ⬡ ${prefix}ttpblue <text>
-> ⬡ ${prefix}ttpgreen <text>
-> ⬡ ${prefix}ttpyellow <text>
 
 
  ⬣ 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
@@ -1559,6 +1553,8 @@ ${readmore}
 > ⬡ ${prefix}twitter
 > ⬡ ${prefix}facebook link
 > ⬡ ${prefix}tiktokdl
+> ⬡ ${prefix}mediafire link
+
  
 
  ⬣ 𝙏𝘼𝙂 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
@@ -2363,8 +2359,6 @@ menu = `シ︎𝘔𝘢𝘬𝘦𝘳 𝘔𝘦𝘯𝘶シ︎
 
 ㋛${prefix}fdeface
 
-㋛${prefix}attp text
-
 ㋛${prefix}emoji
 
 ㋛${prefix}golden text
@@ -2739,46 +2733,6 @@ teks += `❏ *Reply:* ${commandsDB[i].balasan}\n`
 teks += `❏ *Creator:* ${commandsDB[i].creator}\n\n`
 }
 reply(teks)
-break
-// text to speech
-case 'tts':
-              if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
-					  try{
-        if (args.length > 1) {
-        const gtts = require('./lib/gtts')(args[0])
-        if (args.length < 2) return itsu.sendMessage(from, 'Where is the text bro??', text, {quoted: mek})
-        ngab = budy.slice(7)
-        ranm = getRandom('.mp3')
-        rano = getRandom('.ogg')
-        ngab.length > 600
-        ? reply('Too much text bro, maximum 600')
-        : gtts.save(ranm, ngab, function() {
-            exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
-                fs.unlinkSync(ranm)
-                buff = fs.readFileSync(rano)
-                if (err) return reply('Failed bro:(')
-                xeon.sendMessage(from, buff, audio, {quoted:mek,ptt:true})
-                fs.unlinkSync(rano)
-            })
-        })
-	} else if ( args.length === 1 ){
-		ngab = mek.message.extendedTextMessage.contextInfo.quotedMessage.conversation
-		const gtts = require('./lib/gtts')(args[0])
-        ranm = getRandom('.mp3')
-        rano = getRandom('.ogg')
-        gtts.save(ranm, ngab, function() {
-            exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
-                fs.unlinkSync(ranm)
-                buff = fs.readFileSync(rano)
-                if (err) return reply(mess.error.api)
-                itsu.sendMessage(from, buff, audio, {quoted:mek,ptt:true})
-                fs.unlinkSync(rano)
-            })
-        })
-	}
-} catch (e){
-	reply('error!')
-}
 break 
 // group link 
 case 'linkgroup':
@@ -2832,55 +2786,31 @@ break
 						reply(`Successful closing the group ${groupName}`)
 						xeon.groupSettingChange(from, GroupSettingChange.messageSend, true)
 					break
-					// sticker with text
-					case 'stcmeme':
-              if (!isRegistered) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: fkontak})
-  ct = body.slice(9)
-              top = ct.split('|')[0]
-              bottom = ct.split('|')[1]
-              var imgbb = require('imgbb-uploader')
-              if ((isMedia && !mek.message.videoMessage || isQuotedImage || isQuotedSticker) && args.length > 0) {
-              reply(mess.wait)
-              ger = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek 
-              owgi = await xeon.downloadAndSaveMediaMessage(ger)
-              anu = await imgbb("520bd6f6209077d1777c2a4f20c509c2", owgi)
-              teks = `${anu.display_url}`
-              ranp = getRandom('.gif')
-              rano = getRandom('.webp')
-              anu1 = `https://api.memegen.link/images/custom/${top}/${bottom}.png?background=${teks}`
-              sendStickerFromUrl(from, `${anu1}`, mess.success)
-              } else {
-              reply('Use photos/stickers!')
-}
-               break
-               case "ttpyellow":
-              if (!isRegistered) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: fkontak})
-					if (args.length < 1) return reply('The text?')
-					biji = body.slice(11)
-					atetepe = await getBuffer(`https://hardianto-chan.herokuapp.com/api/ttpcustom?text=${biji}&color=yellow&apikey=hardianto`)
-					xeon.sendMessage(from, atetepe, sticker, { quoted: mek })
-					break
-case "ttpgreen":
-              if (!isRegistered) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: fkontak})
-					if (args.length < 1) return reply('The text?')
-					biji = body.slice(10)
-					atetepe = await getBuffer(`https://hardianto-chan.herokuapp.com/api/ttpcustom?text=${biji}&color=green&apikey=hardianto`)
-					xeon.sendMessage(from, atetepe, sticker, { quoted: mek })
-					break
-case "ttpblue":
-              if (!isRegistered) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: fkontak})
-					if (args.length < 1) return reply('The text?')
-					biji = body.slice(9)
-					atetepe = await getBuffer(`https://hardianto-chan.herokuapp.com/api/ttpcustom?text=${biji}&color=blue&apikey=hardianto`)
-					xeon.sendMessage(from, atetepe, sticker, { quoted: mek })
-					break
-case "ttp":
-              if (!isRegistered) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: fkontak})
-					if (args.length < 1) return reply('The text?')
-					biji = body.slice(5)
-					atetepe = await getBuffer(`https://hardianto-chan.herokuapp.com/api/ttpcustom?text=${biji}&color=brown&apikey=hardianto`)
-					xeon.sendMessage(from, atetepe, sticker, { quoted: mek })
-					break;
+					//extra features
+					case "pubglogo":
+       
+				if (args.length < 1) return reply(`Where is the text?\n*Example ${prefix}pubglogo Doge|Bot`)
+				reply('Wait!')
+     ct = body.slice(9)
+     memek1 = ct.split("|")[0];
+     memek2 = ct.split("|")[1];
+     anu = await fetchJson(`https://rest-api-megumin1.herokuapp.com/api/textmaker/game?text=${memek1}&text2=${memek2}&theme=pubg&apikey=beta`)
+     buffer = await getBuffer(anu.result.url)
+     xeon.sendMessage(from, buffer, image, {quoted: mek, caption: 'Here'})
+     break
+case 'mediafire': //By xeon
+				reply('wait')
+anu = await fetchJson(`https://bx-hunter.herokuapp.com/api/mediafiredl?url=${args[0]}/file&apikey=Ikyy69`, {method: 'get'})
+buffer = await getBuffer(anu.download)
+teks = `File Name : ${anu.title}
+Creator : ${anu.creator}
+File Size : ${anu.fileSize}
+Upload Date : ${anu.uploadAt}
+Link Download : ${anu.urlDown}`
+xeon.sendMessage(from, teks, text, {quoted: mek})
+costum(buffer, MessageType.document)
+break
+					// ml hero
 case 'herodetail':
 if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
 res = await herodetails(body.slice(12))
