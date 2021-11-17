@@ -1489,7 +1489,6 @@ ${readmore}
 > ⬡ ${prefix}tod
 > ⬡ ${prefix}tospam amount
 > ⬡ ${prefix}antihidetag on|off
-> ⬡ ${prefix}antiviewonce on|off
 > ⬡ ${prefix}antivirtex on|off
 > ⬡ ${prefix}autojoin on|off
 > ⬡ ${prefix}kickarea
@@ -1531,7 +1530,7 @@ ${readmore}
 > ⬡ ${prefix}neon2 text
 > ⬡ ${prefix}wall text
 > ⬡ ${prefix}notewrite text
-> ⬡ ${prefix}pubglogo text
+> ⬡ ${prefix}pubglogo text|text
 
  
  ⬣ 𝘾𝙊𝙉𝙑𝙀𝙍𝙏 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
@@ -2133,8 +2132,6 @@ menu = `シ𝘎𝘳𝘰𝘶𝘱 𝘔𝘦𝘯𝘶︎シ︎
 ㋛${prefix}tospam amount
 
 ㋛${prefix}antihidetag
-
-㋛${prefix}antiviewonce
 
 ㋛${prefix}autojoin
 
@@ -2798,18 +2795,6 @@ break
      buffer = await getBuffer(anu.result.url)
      xeon.sendMessage(from, buffer, image, {quoted: mek, caption: 'Here'})
      break
-case 'mediafire': //By xeon
-				reply('wait')
-anu = await fetchJson(`https://bx-hunter.herokuapp.com/api/mediafiredl?url=${args[0]}/file&apikey=Ikyy69`, {method: 'get'})
-buffer = await getBuffer(anu.download)
-teks = `File Name : ${anu.title}
-Creator : ${anu.creator}
-File Size : ${anu.fileSize}
-Upload Date : ${anu.uploadAt}
-Link Download : ${anu.urlDown}`
-xeon.sendMessage(from, teks, text, {quoted: mek})
-costum(buffer, MessageType.document)
-break
 					// ml hero
 case 'herodetail':
 if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
@@ -3149,42 +3134,6 @@ if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quo
               },
               {
                 buttonId: `${prefix}antihidetag off`,
-                buttonText: {
-                  displayText: `off`,
-                },
-                type: 1,
-              },
-            ]
-          );
-        }
-        break;
-      case "antiviewonce":
-        if (!isGroup) return reply("Group only");
-        if (!isGroupAdmins && !mek.key.fromMe) return reply("admin only");
-        if (args[0] == "on") {
-          if (isAntiviewonce) return reply("Activated!!");
-          antivo.push(from);
-          fs.writeFileSync("./database/antivo.json", JSON.stringify(antivo));
-          reply("Successfully activated antiviewonce!");
-        } else if (args[0] == "off") {
-          antivo.splice(from, 1);
-          fs.writeFileSync("./database/antivo.json", JSON.stringify(antivo));
-          reply("Successfully turned off antiviewonce!");
-        } else if (!q) {
-          sendButMessage(
-            from,
-            `MODE ANTIVIEWONCE`,
-            `Please choose one`,
-            [
-              {
-                buttonId: `antiviewonce on`,
-                buttonText: {
-                  displayText: `on`,
-                },
-                type: 1,
-              },
-              {
-                buttonId: `antiviewonce off`,
                 buttonText: {
                   displayText: `off`,
                 },
@@ -5077,7 +5026,7 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
         sendMediaURL(from, komik.image, result);
         break;
       case "chara":
-        if (!q) return reply(`gambar apa?\n${prefix}chara xeon`);
+        if (!q) return reply(`What picture is it?\n${prefix}chara xeon`);
         let im = await hx.chara(q);
         let acak = im[Math.floor(Math.random() * im.length)];
         let li = await getBuffer(acak);
@@ -5304,7 +5253,7 @@ buttons = [{buttonId: `pinterest`,buttonText:{displayText: `➡️Next`},type:1}
           fs.unlinkSync(file);
         } else {
           reply(
-            `reply gambar/sticker/audio/video dengan caption ${prefix}totag`
+            `reply image/sticker/audio/video with caption ${prefix}totag`
           );
         }
         break;
