@@ -71,6 +71,8 @@ heroku/nodejs
 🦄 pkg install imagemagick -y
 🦄 git clone https://github.com/DGXeon/DogeBot
 🦄 cd DogeBot
+🦄 ls
+🦄 rm -rf session.json
 🦄 npm install
 🦄 npm start
 🦄 scan qr code within 15seconds
