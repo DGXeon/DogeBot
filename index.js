@@ -2880,7 +2880,7 @@ case "ttp":
 					biji = body.slice(5)
 					atetepe = await getBuffer(`https://hardianto-chan.herokuapp.com/api/ttpcustom?text=${biji}&color=brown&apikey=hardianto`)
 					xeon.sendMessage(from, atetepe, sticker, { quoted: mek })
-					break
+					break;
 case 'herodetail':
 if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
 res = await herodetails(body.slice(12))
