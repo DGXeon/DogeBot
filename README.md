@@ -18,7 +18,7 @@
 
 ## 1st Repository was deleted
 First repo of this bot was mistakely deleted by my friend💔
-It had 5+ stars and 90+ forks😔😭, please give star before forking this repo.🙏🙇🏼‍♂️Thank you!!
+It had 5+ stars and 90+ forks😔😭, please dont forget to give star before forking.🙏🙇🏼‍♂️Thank you!!
 
 
 ## Deploy
