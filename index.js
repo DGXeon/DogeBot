@@ -1546,8 +1546,6 @@ ${readmore}
 
  ⬣ 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
 > ⬡ ${prefix}play query
-> ⬡ ${prefix}ytmp4 link
-> ⬡ ${prefix}ytmp3 link
 > ⬡ ${prefix}video query
 > ⬡ ${prefix}instagram link
 > ⬡ ${prefix}twitter
@@ -1593,7 +1591,7 @@ ${readmore}
 > ⬡ ${prefix}gaycheck @tag
 > ⬡ ${prefix}is
 > ⬡ ${prefix}can
-> ⬡ ${prefix}ship
+> ⬡ ${prefix}rate
 > ⬡ ${prefix}when
 > ⬡ ${prefix}couple
 > ⬡ ${prefix}handsome
