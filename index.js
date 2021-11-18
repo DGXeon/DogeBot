@@ -5200,7 +5200,9 @@ buttons = [{buttonId: `pinterest`,buttonText:{displayText: `➡️Next`},type:1}
           });
         break;
       case "contag":
-        if (!mek.key.fromMe) return reply("This feature is only for the owner 🗿");
+if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak});
+					if (!isGroup) return reply('this feature is only for groups');
+					if (!isGroupAdmins) return reply('only admin can use this feature');
         pe = args.join("");
         entah = pe.split("|")[0];
         nah = pe.split("|")[1];
@@ -5226,6 +5228,9 @@ buttons = [{buttonId: `pinterest`,buttonText:{displayText: `➡️Next`},type:1}
         break;
       case "sticktag":
             case "stickertag":
+            if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak});
+					if (!isGroup) return reply('this feature is only for groups');
+					if (!isGroupAdmins) return reply('only admin can use this feature');
         if (
           ((isMedia && !mek.message.videoMessage) || isQuotedSticker) &&
           args.length == 0
@@ -5826,8 +5831,9 @@ if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quo
         fakeyt(`「 *SELF-MODE* 」`);
         break;
       case "hidetag":
-        if (!mek.key.fromMe) return reply("This feature is only for the owner 🗿");
-        if (!isGroup) return reply('this feature is only for groups');
+if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak});
+					if (!isGroup) return reply('this feature is only for groups');
+					if (!isGroupAdmins) return reply('only admin can use this feature');
         var value = args.join(" ");
         var group = await xeon.groupMetadata(from);
         var member = group["participants"];
@@ -6168,6 +6174,9 @@ Source : ${anu.result.source}
         break;
     
       case "totag":
+      if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak});
+					if (!isGroup) return reply('this feature is only for groups');
+					if (!isGroupAdmins) return reply('only admin can use this feature');
         if (
           ((isMedia && !mek.message.videoMessage) || isQuotedSticker) &&
           args.length == 0
