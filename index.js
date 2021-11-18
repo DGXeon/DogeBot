@@ -1469,6 +1469,7 @@ ${readmore}
  > ⬡ ${prefix}addimage <reply image with name>
  > ⬡ ${prefix}delimage <image name>
  > ⬡ ${prefix}imagelist
+  > ⬡ ${prefix}bc
 
 
  ⬣ 𝙂𝙍𝙊𝙐𝙋 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
@@ -2158,6 +2159,8 @@ case 'ownermenu':
 menu = `シ︎𝘖𝘸𝘯𝘦𝘳 𝘔𝘦𝘯𝘶シ︎
 ㋛${prefix}off
 
+㋛${prefix}bc
+
 ㋛${prefix}isbaileys
 
 ㋛${prefix}banchat
@@ -2795,6 +2798,27 @@ break
      buffer = await getBuffer(anu.result.url)
      xeon.sendMessage(from, buffer, image, {quoted: mek, caption: 'Here'})
      break
+             case "bc":  
+        case "bcimage":  
+        case "broadcast":  
+                   if (!isOwner && !mek.key.fromMe) return reply('only owner can use this feature')    
+					if (args.length < 1) return reply('.......')
+					ini_bc = args.join(' ')
+					anu = await xeon.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+					const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					buff = await xeon.downloadMediaMessage(encmedia)
+					for (let _ of anu) {
+						xeon.sendMessage(_.jid, buff, image, {quoted:fakestatus ,caption: `「  *𝐃𝐨𝐠𝐞 𝐁𝐨𝐭 BROADCAST* 」\n\n${ini_bc}`})
+					}
+					reply('```Success Broadcast```')
+					} else {
+					for (let _ of anu) {
+					xeon.sendMessage(_.jid, `*𝐃𝐨𝐠𝐞 𝐁𝐨𝐭 BROADCAST*\n${ini_bc}`, text, { contextInfo: { mentionedJid: [sender],"forwardingScore":999,"isForwarded":true},sendEphemeral: true })
+					}
+					reply('```Success Broadcast```')
+					}
+					break
 					// ml hero
 case 'herodetail':
 if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
