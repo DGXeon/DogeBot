@@ -5772,36 +5772,7 @@ Source : ${anu.result.source}
 				xeon.sendMessage(from, buffer1, video, {mimetype: 'video/mp4', filename: `${anu.result.video}.mp4`, quoted:freply, caption: 'Here bro'})
 					break  
 					
-      case "play":
-        if (args.length === 0)
-          return reply(
-            `Send orders *${prefix}play* _The title of the song to be searched_`
-          );
-        var srch = args.join("");
-        aramas = await yts(srch);
-        aramat = aramas.all;
-        var mulaikah = aramat[0].url;
-        try {
-          yta(mulaikah).then((res) => {
-            const { dl_link, thumb, title, filesizeF, filesize } = res;
-            axios
-              .get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
-              .then(async (a) => {
-                if (Number(filesize) >= 100000)
-                  return sendMediaURL(
-                    from,
-                    thumb,
-                    `*PLAY MUSIC*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_For the duration of more than the limit is presented in the link_`
-                  );
-                const captions = `*PLAY MUSIC*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n*Link* : ${a.data}\n\n_Please wait for the media file to be sent it may take a few minutes_`;
-                sendMediaURL(from, thumb, captions);
-                await sendMediaURL(from, dl_link).catch(() => reply("error"));
-              });
-          });
-        } catch (err) {
-          reply(mess.error.api);
-        }
-        break;
+      
       case "video":
         if (args.length === 0)
           return reply(
