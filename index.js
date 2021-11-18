@@ -6001,35 +6001,7 @@ Link : ${get_resultP.url_audio}
           reply(`Send a picture with a caption ${prefix}sethumb`);
         }
         break;
-      case "ytmp4":
-        if (args.length === 0)
-          return reply(`Send orders *${prefix}ytmp4 [linkYt]*`);
-        let isLinks2 = args[0].match(
-          /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-        );
-        if (!isLinks2) return reply(mess.error.Iv);
-        try {
-          reply(mess.wait);
-          ytv(args[0]).then((res) => {
-            const { dl_link, thumb, title, filesizeF, filesize } = res;
-            axios
-              .get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
-              .then((a) => {
-                if (Number(filesize) >= 40000)
-                  return sendMediaURL(
-                    from,
-                    thumb,
-                    `*YTMP 4!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_For the duration of more than the limit is presented in the link_`
-                  );
-                const captionsYtmp4 = `*Data Successfully Obtained!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Size* : ${filesizeF}\n\n_Please wait for the media file to be sent it may take a few minutes_`;
-                sendMediaURL(from, thumb, captionsYtmp4);
-                sendMediaURL(from, dl_link).catch(() => reply(mess.error.api));
-              });
-          });
-        } catch (err) {
-          reply(mess.error.api);
-        }
-        break;
+
       case "emoji":
         if (!q) return fakegroup("the emoji?");
         qes = args.join(" ");
@@ -6039,35 +6011,7 @@ Link : ${get_resultP.url_audio}
           console.log(teks);
         });
         break;
-      case "ytmp3":
-        if (args.length === 0)
-          return reply(`Send orders *${prefix}ytmp3 [linkYt]*`);
-        let isLinks = args[0].match(
-          /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-        );
-        if (!isLinks) return reply(mess.error.Iv);
-        try {
-          reply(mess.wait);
-          yta(args[0]).then((res) => {
-            const { dl_link, thumb, title, filesizeF, filesize } = res;
-            axios
-              .get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
-              .then((a) => {
-                if (Number(filesize) >= 30000)
-                  return sendMediaURL(
-                    from,
-                    thumb,
-                    `*Data Successfully Obtained!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_For the duration of more than the limit is presented in the link_`
-                  );
-                const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n_Please wait for the media file to be sent it may take a few minutes_`;
-                sendMediaURL(from, thumb, captions);
-                sendMediaURL(from, dl_link).catch(() => reply(mess.error.api));
-              });
-          });
-        } catch (err) {
-          reply(mess.error.api);
-        }
-        break;
+
       case "image":
       case "gimage":
       case "googleimage":
