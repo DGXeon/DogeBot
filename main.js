@@ -354,7 +354,7 @@ if (anu.action == 'add' && !mem.includes(client.user.jid)) {
     }
   });
   //
- antidel = true
+ antidel = false
   client.on("message-delete", async (m) => {
     if (m.key.remoteJid == "status@broadcast") return;
     if (!m.key.fromMe && m.key.fromMe) return;
