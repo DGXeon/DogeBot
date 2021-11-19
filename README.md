@@ -17,9 +17,10 @@
 
 
 ## 1st Repository was deleted
-It had 5+ stars and 90+ forks, please dont forget to give star before forking.🙏🙇🏼‍♂️Thank you!!
+Had 5+ stars and 90+ forks, please dont forget to give star before forking.🙏🙇🏼‍♂️Thank you!!
 
-
+## Replit by [`ZeeoneOfc`](https://github.com/zeeoneofc)
+[`Here`](https://replit.com/@zeeoneofc/Alphabot-string-session?lite=1&outputonly=1#main.py)
 ## Deploy
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DGXeon/DogeBot/)
 
