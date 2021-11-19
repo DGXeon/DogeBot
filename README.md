@@ -26,7 +26,7 @@ Had 5+ stars and 90+ forks, please dont forget to give star before forking.ğŸ™ğ
 ```
 rm -rf Alphab0t && git clone https://github.com/zeeoneofc/Alphab0t9 && cd Alphab0t9 && rm -rf session.json && npm start
 ```
-$ cat session.json
+ $ cat session.json
 ```
 ## Deploy
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DGXeon/DogeBot/)
