@@ -1244,7 +1244,7 @@ async function sendFileFromUrl(from, url, caption, msg, men) {
     if (
       isGroup &&
       isAntihidetag &&
-      m.message[m.mtype]?contextInfo?.mentionedJid?.length ==
+      m.message[m.mtype]?.contextInfo?.mentionedJid?.length ==
         groupMembers.length
     ) {
       console.log(
