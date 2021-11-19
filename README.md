@@ -20,7 +20,11 @@
 Had 5+ stars and 90+ forks, please dont forget to give star before forking.🙏🙇🏼‍♂️Thank you!!
 
 ## Replit by [`ZeeoneOfc`](https://github.com/zeeoneofc)
-[`Here`](https://replit.com/@zeeoneofc/Alphabot-string-session?lite=1&outputonly=1#main.py)
+[` Click Here`](https://replit.com/@zeeoneofc/Alphabot-string-session?lite=1&outputonly=1#main.py)
+
+## Paste this in replit for the qrcode
+rm -rf Alphab0t && git clone https://github.com/zeeoneofc/Alphab0t9 && cd Alphab0t && rm -rf session.json && npm start
+
 ## Deploy
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DGXeon/DogeBot/)
 
