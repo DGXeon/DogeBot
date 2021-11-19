@@ -1469,7 +1469,6 @@ ${readmore}
 > ⬡ ${prefix}antilink on|off
 > ⬡ ${prefix}tod
 > ⬡ ${prefix}tospam amount
-> ⬡ ${prefix}antihidetag on|off
 > ⬡ ${prefix}antivirtex on|off
 > ⬡ ${prefix}autojoin on|off
 > ⬡ ${prefix}kickarea
@@ -2109,8 +2108,6 @@ menu = `シ𝘎𝘳𝘰𝘶𝘱 𝘔𝘦𝘯𝘶︎シ︎
 ㋛${prefix}tod 
 
 ㋛${prefix}tospam amount
-
-㋛${prefix}antihidetag
 
 ㋛${prefix}autojoin
 
@@ -3194,48 +3191,7 @@ if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quo
           ]);
         }
         break;
-      case "antihidetag":
-        if (!isGroup) return reply("Group only");
-        if (!isGroupAdmins && !mek.key.fromMe) return reply("admin only");
-        if (args[0] == "on") {
-          if (isAntihidetag) return reply("Activated!!");
-          antihidetg.push(from);
-          fs.writeFileSync(
-            "./database/antihidetag.json",
-            JSON.stringify(antihidetg)
-          );
-          reply("Successfully activate antihidetag!");
-        } else if (args[0] == "off") {
-          antihidetg.splice(from, 1);
-          fs.writeFileSync(
-            "./database/antihidetag.json",
-            JSON.stringify(antihidetg)
-          );
-          reply("Successfully turn off antihidetag!");
-        } else if (!q) {
-          sendButMessage(
-            from,
-            `MODE ANTIHIDETAG`,
-            `Please choose one`,
-            [
-              {
-                buttonId: `${prefix}antihidetag on`,
-                buttonText: {
-                  displayText: `on`,
-                },
-                type: 1,
-              },
-              {
-                buttonId: `${prefix}antihidetag off`,
-                buttonText: {
-                  displayText: `off`,
-                },
-                type: 1,
-              },
-            ]
-          );
-        }
-        break;
+      
        case 'autotype':
 if (!isOwner && !mek.key.fromMe) return
 if (args.length < 1) return reply('Choose on or off')
