@@ -25,8 +25,12 @@ Had 5+ stars and 90+ forks, please dont forget to give star before forking.ğŸ™ğ
 ## Paste this in replit for the qrcode
 ```
 rm -rf Alphab0t && git clone https://github.com/zeeoneofc/Alphab0t9 && cd Alphab0t9 && rm -rf session.json && npm start
+```
+## `Copy paste this`
+```
 $ cat session.json
 ```
+
 ## Deploy
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DGXeon/DogeBot/)
 
