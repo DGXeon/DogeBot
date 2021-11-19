@@ -1241,27 +1241,7 @@ async function sendFileFromUrl(from, url, caption, msg, men) {
       msg.mek[Object.keys(msg.mek)[0]].viewOnce = false;
       xeon.copyNForward(m.chat, msg);
     }
-    if (
-      isGroup &&
-      isAntihidetag &&
-      m.message[m.mtype]?.contextInfo?.mentionedJid?.length ==
-        groupMembers.length
-    ) {
-      console.log(
-        color("[ANTI-HIDETAG]", "red"),
-        color(`@${sender.split("@")[0]} send message hidetag`, "white")
-      );
-      reply(`@${sender.split("@")[0]} Detected sending hidetag messages!!`);
-      kick(from, sender);
-    }
 
-    if (isGroup && isAntivirtex && !mek.key.fromMe) {
-      if (budy.length > 700) {
-        if (isGroupAdmins) return reply("free admin");
-        reply("ANTIVIRTEX DETECTED!! SORRY YOU WILL BE KICKED ;V");
-        xeon.groupRemove(from, sender);
-      }
-    }
     if (isGroup && autojoin == true) {
       if (budy.includes("://chat.whatsapp.com/")) {
         console.log(
@@ -5985,7 +5965,7 @@ Source : ${anu.result.source}
         }
         break;
       case "toimg":
-        if (!isQuotedSticker) return reply("𝗥𝗲𝗽𝗹𝘆/𝘁𝗮𝗴 𝘀𝘁𝗶𝗰𝗸𝗲𝗿 !");
+        if (!isQuotedSticker) return reply("𝗥𝗲𝗽𝗹𝘆/𝘁𝗮𝗴 𝘀𝘁𝗶𝗰??𝗲𝗿 !");
         reply(mess.wait);
         encmedia = JSON.parse(JSON.stringify(mek).replace("quotedM", "m"))
           .message.extendedTextMessage.contextInfo;
