@@ -5110,7 +5110,7 @@ buttons = [{buttonId: `pinterest`,buttonText:{displayText: `➡️Next`},type:1}
       case "on":
         if (!mek.key.fromMe) return;
         offline = false;
-        fakestatus(" ```ANDA TELAH ONLINE``` ");
+        fakestatus(" ```YOU ARE ONLINE``` ");
         break;
       case "status":
         fakestatus(
