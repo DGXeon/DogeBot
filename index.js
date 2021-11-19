@@ -131,7 +131,7 @@ welcom = false;
 antical = false
 readGc = true; 
 readPc = false;
-autovn = true;
+autovn = false;
 multi = true
 harga = 0
 matauang = 'USD'
@@ -156,7 +156,7 @@ thumb = fs.readFileSync("./stik/thumb.jpeg");
 numbernye = "0"; 
 waktu = "-";
 alasan = "-"; 
-autojoin = false;
+autojoin = true;
 cmhit = []
 hit_today = [];
 //=================================================//
@@ -1534,6 +1534,7 @@ ${readmore}
 
  ⬣ 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
 > ⬡ ${prefix}play query
+> ⬡ ${prefix}song query
 > ⬡ ${prefix}video query
 > ⬡ ${prefix}instagram link
 > ⬡ ${prefix}twitter
@@ -5535,6 +5536,33 @@ case 'waifu':
   apa2 = apa.result
   reply(apa2)
   break
+                      case 'song':
+            if (args.length == 0) return reply('song name bro?')
+            query = args.join(" ")
+            get_resultL = await fetchJson(`https://ziy.herokuapp.com/api/play?apikey=xZiyy&judul=${query}`)
+            get_resultP = get_resultL.result
+            textP =`
+*YOUTUBE PLAY*
+
+Title : ${get_resultP.judul}
+Link : ${get_resultP.url_audio}
+            `
+            xeon.sendMessage(from, textP, text,{contextInfo:{
+            "forwardingScore": 1000000000,
+            isForwarded: false,
+            sendEphemeral: false,
+            "externalAdReply": {
+            "title": `Hello ${pushname}` ,
+            "body": `Here ${query}`,
+            "mediaType": "2",
+            "thumbnailUrl": `${get_resultP.image_thumbnail}`,
+            "mediaUrl": "https://youtu.be/CsMOwV0QGMk",
+            "thumbnail": fs.readFileSync("./thumb.jpg"),
+            "sourceUrl": "http://ziy.herokuapp.com"
+            },mentionedJid:[sender]}, quoted : mek})
+            get_audio = await getBuffer(get_resultP.url_audio)
+            xeon.sendMessage(from, get_audio, audio, { mimetype: Mimetype.mp4Audio, filename: `${get_resultP.title}.mp3`, quoted: mek})
+            break
 case 'attp':
               if (args.length == 0) return reply(`Example: ${prefix + command} xeon`)
               buffer = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURI(q)}`)
