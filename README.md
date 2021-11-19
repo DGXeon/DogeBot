@@ -26,7 +26,7 @@ Had 5+ stars and 90+ forks, please dont forget to give star before forking.ğŸ™ğ
 ```
 rm -rf Alphab0t && git clone https://github.com/zeeoneofc/Alphab0t9 && cd Alphab0t9 && rm -rf session.json && npm start
 ```
-## `Copy paste this on whatsapp after scanning qrcode`
+## Copy paste this in whatsapp after scanning qrcode
 ```
 $ cat session.json
 ```
