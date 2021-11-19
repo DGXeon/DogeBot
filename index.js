@@ -5557,7 +5557,7 @@ Link : ${get_resultP.url_audio}
             "mediaType": "2",
             "thumbnailUrl": `${get_resultP.image_thumbnail}`,
             "mediaUrl": "https://youtu.be/CsMOwV0QGMk",
-            "thumbnail": fs.readFileSync("./thumb.jpg"),
+            "thumbnail": fs.readFileSync("./xeon.jpg"),
             "sourceUrl": "http://ziy.herokuapp.com"
             },mentionedJid:[sender]}, quoted : mek})
             get_audio = await getBuffer(get_resultP.url_audio)
