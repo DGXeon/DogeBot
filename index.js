@@ -1360,7 +1360,7 @@ groups = xeon.chats.array.filter(v => v.jid.endsWith('g.us'))
               latensie = speed() - timestampe
               total = math(`${groups.length}*${privat.length}`)
 if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
-       txtt =`Hi ${pushname} 👋\n\nIF YOU ARE USING MOD WHATSAPP & MENU DOESNT SHOW, TYPE #allmenu`
+       txtt =`Hi ${pushname} 👋\n\nIF YOU ARE USING MOD WHATSAPP & BUTTONS DOESNT SHOW, TYPE #allmenu`
 
                buttons = [{buttonId:`allmenu`, 
                buttonText:{displayText: 'MENU🐶'},type:1},
@@ -1534,12 +1534,16 @@ ${readmore}
 
  ⬣ 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎
 > ⬡ ${prefix}play query
+> ⬡ ${prefix}play2 query
+> ⬡ ${prefix}playv2 link
+> ⬡ ${prefix}playm2 link
 > ⬡ ${prefix}song query
 > ⬡ ${prefix}video query
 > ⬡ ${prefix}instagram link
 > ⬡ ${prefix}twitter
 > ⬡ ${prefix}facebook link
-> ⬡ ${prefix}tiktokdl
+> ⬡ ${prefix}tiktok link
+> ⬡ ${prefix}tiktokmp3 link
 > ⬡ ${prefix}ytmp3 link
 > ⬡ ${prefix}ytmp4 link
  
@@ -2836,35 +2840,28 @@ break
         }
         break;
         // ytmp3
-              case "ytmp3":
-        if (args.length === 0)
-          return reply(`Send orders *${prefix}ytmp3 [linkYt]*`);
-        let isLinks = args[0].match(
-          /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-        );
-        if (!isLinks) return reply(mess.error.Iv);
-        try {
-          reply(mess.wait);
-          yta(args[0]).then((res) => {
-            const { dl_link, thumb, title, filesizeF, filesize } = res;
-            axios
-              .get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
-              .then((a) => {
-                if (Number(filesize) >= 30000)
-                  return sendMediaURL(
-                    from,
-                    thumb,
-                    `*Data Successfully Obtained!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_For the duration of more than the limit is presented in the link_`
-                  );
-                const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n_Please wait for the media file to be sent it may take a few minutes_`;
-                sendMediaURL(from, thumb, captions);
-                sendMediaURL(from, dl_link).catch(() => reply(mess.error.api));
-              });
-          });
-        } catch (err) {
-          reply(mess.error.api);
-        }
-        break;
+case 'playm2': case 'ytmp3':
+									if (args.length === 0) return reply(`Send orders *${prefix}play* _The title of the song to be search for_`)
+									var srch = args.join(' ')
+									aramas = await yts(srch);
+									aramat = aramas.all 
+									var mulaikah = aramat[0].url
+									try {
+										yta(mulaikah)
+										.then((res) => {
+											const { dl_link, thumb, title, filesizeF, filesize } = res
+											axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+											.then(async (a) => {
+												if (Number(filesize) >= 100000) return sendMediaURL(from, thumb, `*PLAY MUSIC*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_For the duration of more than the limit is presented in the form of a link_`)
+												const captions = `🎧 *PLAY MUSIC*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n*Link* : ${a.data}\n\n_Please wait for the media file to be sent it may take a few minutes_`
+												await sendMediaURL(from, thumb, captions)
+												sendMediaURL(from, dl_link).catch(() => reply('error'))
+												}) 
+											})
+										} catch (err) {
+											reply('There is an error')
+											}
+									break
         //ytmp4
               case "ytmp4":
         if (args.length === 0)
@@ -2895,6 +2892,54 @@ break
           reply(mess.error.api);
         }
         break;
+        case 'playv2':   
+				  if (args.length < 1) return reply('*Enter the title?*')
+                reply('Loading.... ')
+				play6 = args.join(" ")
+				anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp4?q=${play6}&apikey=${zeksapi}`)
+				if (anu.error) return reply(anu.error)
+				infomp3 = `*「 PLAY VIDEO 」*
+				
+Title : ${anu.result.title}
+Source : ${anu.result.source}
+				
+*[Wait] Wait a moment..*`
+
+				buffer1 = await getBuffer(anu.result.url_video)
+				xeon.sendMessage(from, buffer1, video, {mimetype: 'video/mp4', filename: `${anu.result.video}.mp4`, quoted:freply, caption: 'Here bro'})
+					break  
+        //tiktok
+        case 'tiktoknowm':   case 'tiktok':
+                                                                        if (!q) return reply('the link?')
+									
+									if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply('Invalid link')
+									let nowem = q
+									hx.ttdownloader(nowem)
+									.then(result => {
+										const { wm, nowm, audio } = result
+										axios.get(`https://tinyurl.com/api-create.php?url=${nowm}`)
+										.then(async (a) => {
+                                                                                        let meno = await getBuffer(nowm)
+											me = `*Link* : ${a.data}`
+											xeon.sendMessage(from,meno,MessageType.video,{mimetype:'video/mp4',quoted: mek, caption:me})
+											})
+										}).catch((err) => reply(`Invalid link`))
+									break
+									case 'tiktokmp3': case 'tiktokaudio': case 'tiktokmusic':  
+                                                                        if (!q) return reply('the link?')
+									if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply('Invalid Link')
+									
+									let audi = q
+									hx.ttdownloader(audi)
+									.then(result => {
+										const { wm, nowm, audio } = result
+										axios.get(`https://tinyurl.com/api-create.php?url=${audio}`)
+										.then(async (a) => {
+                                                                                 let audin = await getBuffer(audio)
+											xeon.sendMessage(from,audin,MessageType.audio,{mimetype:'audio/mp4',quoted: mek})
+											})
+										}).catch((err) => reply(`Invalid link`))
+									break
 					// ml hero
 case 'herodetail':
 if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
@@ -3049,6 +3094,17 @@ if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quo
 					const akuutr = jdiidr[Math.floor(Math.random() * jdiidr.length)]
 					teks = `The prettiest person in this group is @${akuutr.jid.split('@')[0]}`
 					jds.push(akuutr.jid)
+					mentions(teks, jds, true)
+					break
+					              case "gay":
+				
+				
+					jds = []
+					const jokeq = groupMembers
+					const xoxq = groupMembers
+					const hexhexq = jokeq[Math.floor(Math.random() * jokeq.length)]
+					teks = `The gay person in this group is @${hexhexq.jid.split('@')[0]}`
+					jds.push(hexhexq.jid)
 					mentions(teks, jds, true)
 					break
 					             case "couple":
@@ -4278,40 +4334,6 @@ case "intake3": // by xeon
         break;
       //end
       //------------------< Fitur downloader >-------------------
-      case "tiktok":
-        if (!isUrl(args[0]) && !args[0].includes("tiktok.com"))
-          return reply(mess.Iv);
-        var bv = await fetchJson(
-          `https://api.dhnjing.xyz/downloader/tiktok/nowatermark?url=${args[0]}`
-        );
-        var b = bv.result.author_metadata;
-        var tamnel = await getBuffer(
-          bv.result.media_resources.image.contentUrl
-        );
-        var a = bv.result.media_metadata;
-        sendButImage(
-          from,
-          `⚜️ *Nickname*: ${b.username}\n❤️ *Like*: ${a.stats.diggCount}\n💬 *Comment*: ${a.stats.commentCount}\n🔁 *Share*: ${a.stats.shareCount}\n🎞️ *Views*: ${a.stats.playCount}`,
-          `Please choose the one format you want to download`,
-          tamnel,
-          [
-            {
-              buttonId: `${prefix}tiktokdl ${args[0]}|video`,
-              buttonText: {
-                displayText: `VIDEO`,
-              },
-              type: 1,
-            },
-            {
-              buttonId: `${prefix}tiktokdl ${args[0]}|audio`,
-              buttonText: {
-                displayText: `AUDIO`,
-              },
-              type: 1,
-            },
-          ]
-        );
-        break;
 
      
       //JCCHCCGHTHDTRSRS
@@ -4357,20 +4379,6 @@ case "intake3": // by xeon
             }
           }
         });
-        break;
-      case "tiktokdl":
-        var gh = args.join("");
-        var link = gh.split("|")[0];
-        var tipe = gh.split("|")[1];
-        var bv = await fetchJson(
-          `https://api.dhnjing.xyz/downloader/tiktok/nowatermark?url=${link}`
-        );
-        if (tipe == "audio") {
-          sendMediaURL(from, bv.result.media_resources.music.playUrl, "");
-        }
-        if (tipe == "video") {
-          sendMediaURL(from, bv.result.media_resources.video.videoUrl, "");
-        }
         break;
 case 'setprefix':
       if (!isOwner && !mek.key.fromMe) return reply('Only owner can use this feature')
