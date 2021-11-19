@@ -1771,7 +1771,7 @@ reply(`${mek.quoted.caption}`)
 break
 case 'iggw':
 if (!isRegistered) return sendButMessage (from, daftar1, daftar2, daftar3, { quoted: fkontak})
-  reply('wa.me/916909137213')
+  reply('*click on the link below*\nwa.me/916909137213')
 break
    
 case 'owner':
@@ -4146,7 +4146,7 @@ break
 			 res = await xeon.prepareMessageFromContent(from,{
 "templateMessage": {
 						"hydratedTemplate": {
-							"hydratedContentText": `Hi ${pushname} 👋,\n\n${jam} - ${week} ${weton} - ${date}`,
+							"hydratedContentText": `Hi ${pushname} 👋`,
 							"hydratedFooterText": `${fakeyoi}`,
 							"hydratedButtons": [
 								{
@@ -4193,7 +4193,7 @@ case 'debug2':
     ]
   },
   "hydratedTemplate": {
-    "hydratedContentText": `Hi ${pushname} 👋,\n\n${jam} - ${week} ${weton} - ${date}`,
+    "hydratedContentText": `Hi ${pushname}`,
     "hydratedFooterText": `${fakeyoi}`,
     "hydratedButtons": [
       {
