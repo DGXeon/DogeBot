@@ -19,15 +19,6 @@
 ## 1st Repository was deleted
 Had 5+ stars and 90+ forks, please dont forget to give star before forking.🙏🙇🏼‍♂️Thank you!!
 
-## `Changing bot name`
-```
-𝐃𝐨𝐠𝐞 𝐁𝐨𝐭
-```
-## `Changing Owner name in the menu`
-```
-𝙓𝙚𝙤𝙣
-```
-
 ## Deploy
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DGXeon/DogeBot/)
 
