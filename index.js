@@ -1,6 +1,6 @@
-// Script by Xeon 
+// Script by anees
 // 𝐃𝐨𝐠𝐞 𝐁𝐨𝐭
-// ©Xeon Bot Incorporated
+// ©anees Bot Incorporated
 const {
   WAConnection: _WAConnection,
   MessageType,
