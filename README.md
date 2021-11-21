@@ -42,11 +42,6 @@ heroku/nodejs
 
 [`Click Here`](https://github.com/DGXeon/DogeBot/blob/master/session.json#L1)
 
-## `SETTING`
-
-- CHANGE OWNER NUMBER [Here](https://github.com/DGXeon/DogeBot/blob/master/index.js#L136)
-- CHANGE OWNER NAME [Here](https://github.com/DGXeon/DogeBot/blob/master/index.js#L138)
-
 # Installation
 ## Clone Repo & Installation dependencies
 ```bash
@@ -59,7 +54,6 @@ heroku/nodejs
 🦄 apt update
 🦄 apt upgrade
 🦄 pkg update && pkg upgrade 
-🦄 pkg install hot
 🦄 pkg install bash
 🦄 pkg install libwebp
 🦄 pkg install git -y
